@@ -4,11 +4,10 @@
  */
 // add
 exports.up = function(knex) {
-  await knex.schema.createTable('people', (table) => {
+  return knex.schema.createTable('people', (table) => {
     table.increments('id');
     table.string('name');
   });
-  return;
 };
 
 /**
