@@ -5,7 +5,6 @@
  */
 module.exports = {
 
-  // ignore, development will be not used
   development: {
     client: 'sqlite3',
     connection: {
