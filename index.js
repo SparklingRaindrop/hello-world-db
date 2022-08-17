@@ -21,12 +21,7 @@ app.get("/add/:name", async (req, res) => {
 app.get("/list", async (req, res) => {
   // Ersätt people med alla personer från databasen
 
-  //const people = await knex("people").select();
-  const people = [{
-    "name": "Ryan"
-  },{
-    "name": "Ryan2"
-  }];
+  const people = await knex("people").select();
   
   res.send(people);
 })
