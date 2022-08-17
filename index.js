@@ -7,22 +7,18 @@ app.get("/", (req, res) => {
   res.send(process.env.GREETING);
 })
 
-app.get("/add/:name", (req, res) => {
+app.get("/add/:name", async (req, res) => {
   // Ersätt person med den skapade personen från databasen
-  const person = {
-    id: 0,
-    name: "Ryan"
-  }; 
+
+  const person = await knex("people").insert({ name: req.params.name });
 
   res.send(person)
 })
 
-app.get("/list", (req, res) => {
+app.get("/list", async (req, res) => {
   // Ersätt people med alla personer från databasen
-  const people = [{
-    id: 0,
-    name: "Ryan"
-  }];
+
+  const people = await knex("people").select();
 
   res.send(people);
 })
