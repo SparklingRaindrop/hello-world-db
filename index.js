@@ -10,17 +10,17 @@ app.get("/", (req, res) => {
 app.get("/add/:name", async (req, res) => {
   // Ersätt person med den skapade personen från databasen
 
+  const person = await knex("people").insert({ name: req.params.name });
 
-  const result = await knex('people').insert({ name: req.params.name });
-  res.send(result);
+  res.send(person)
 })
 
 app.get("/list", async (req, res) => {
   // Ersätt people med alla personer från databasen
 
+  const people = await knex("people").select();
 
-  const result = await knex('people').select();
-  res.send(result);
+  res.send(people);
 })
 
 app.listen(process.env.PORT, () => {
