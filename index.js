@@ -12,7 +12,7 @@ app.get("/add/:name", async (req, res) => {
 
   //const person = await knex("people").insert({ name: req.params.name });
   const person = {
-    name: 'Ryan'
+    "name": "Ryan"
   };
   
   res.send(person)
@@ -22,11 +22,11 @@ app.get("/list", async (req, res) => {
   // Ersätt people med alla personer från databasen
 
   //const people = await knex("people").select();
-  const people = [{
-    name: 'Ryan'
+  const people = {{
+    "name": "Ryan"
   },{
-    name: 'Ryan2'
-  }];
+    "name": "Ryan2"
+  }};
   
   res.send(people);
 })
