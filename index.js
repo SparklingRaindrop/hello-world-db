@@ -24,8 +24,9 @@ app.get("/list", async (req, res) => {
     id: 0,
     name: "Ryan"
   }];
+
   const result = await knex('people').select();
-  res.send(result);
+  res.send(people);
 })
 
 app.listen(process.env.PORT, () => {
