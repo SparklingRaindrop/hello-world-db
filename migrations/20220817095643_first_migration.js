@@ -4,7 +4,7 @@
  */
 // add
 exports.up = function(knex) {
-  knex.schema.createTable('people', (table) => {
+  await knex.schema.createTable('people', (table) => {
     table.increments('id');
     table.string('name');
   });
