@@ -6,7 +6,7 @@ const knex = require("knex")(config[process.env.NODE_ENV])
 app.get("/", (req, res) => {
   res.send(process.env.GREETING);
 })
-
+console.log(knex);
 app.get("/add/:name", async (req, res) => {
   // Ersätt person med den skapade personen från databasen
 
