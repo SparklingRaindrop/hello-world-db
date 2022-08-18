@@ -11,8 +11,9 @@ app.get("/add/:name", async (req, res) => {
     id: 0,
     name: "Ryan"
   }; 
-
-  res.send(person)
+  const result = await db('people')
+  .insert({ name: req.params.name });
+  res.send(result);
 })
 
 app.get("/list", async (req, res) => {
