@@ -4,7 +4,7 @@ const config = require("./knexfile.js");
 const knex = require("knex")(config[process.env.NODE_ENV])
 
 app.get("/", (req, res) => {
-  res.send(process.env.NODE_ENV);
+  res.send(process.env.GREETING);
 });
 
 app.get("/add/:name", async (req, res) => {
