@@ -3,13 +3,9 @@
  * @returns { Promise<void> }
  */
  exports.up = function(knex) {
-    knex.schema.hasTable('people').then((exists) => {
-        if (!exists) {
-            return knex.schema.createTable("people", (table) => {
-            table.increments("id");
-            table.string("name");
-            });
-        }
+    return knex.schema.createTable("people", (table) => {
+        table.increments("id");
+        table.string("name");
     });
 };
   
