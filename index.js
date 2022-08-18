@@ -1,7 +1,5 @@
+const db = require("knex")(require("./knexfile.js")[process.env.NODE_ENV] || require("./knexfile.js").development);
 const app = require("express")();
-
-const config = require("./knexfile.js");
-const knex = require("knex")(config[process.env.NODE_ENV] || 'development');
 
 app.get("/", (req, res) => {
   res.send(process.env.GREETING);
@@ -13,18 +11,17 @@ app.get("/add/:name", async (req, res) => {
     id: 0,
     name: "Ryan"
   }; 
-  const result = await knex('people').insert({ name: req.params.name });
-  res.send(result)
+  const result = await db('people')
+    .insert({ name: req.params.name });
+
+  res.send(result);
 })
 
-app.get("/list", (req, res) => {
+app.get("/list", async (req, res) => {
   // Ersätt people med alla personer från databasen
-  const people = [{
-    id: 0,
-    name: "Ryan"
-  }];
-
-  res.send(people);
+  const result = await db('people')
+    .select();
+  res.send(result);
 })
 
 app.listen(process.env.PORT || 4000, () => {
