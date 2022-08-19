@@ -1,7 +1,14 @@
 const app = require("express")();
 
 const config = require("./knexfile.js");
-const knex = require("knex")(config[process.env.NODE_ENV])
+const knex = require("knex")(config[process.env.NODE_ENV]);
+
+async function init() {
+  await knex.migrate.latest();
+  console.log('migration latest');
+}
+
+init();
 
 app.get("/", (req, res) => {
   res.send(process.env.GREETING);
